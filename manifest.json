@@ -1,0 +1,8 @@
+{
+  "version": 2,
+  "kdf": "PBKDF2-HMAC-SHA256",
+  "iterations": 600000,
+  "salt": "Op1JOEZimr+n5B6fDLum0g==",
+  "cipher": "AES-256-GCM",
+  "generated": "2026-10-24T20:08:27Z"
+}
