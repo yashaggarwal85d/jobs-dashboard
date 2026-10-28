@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0b0c0b">
+<title>Exodus Board</title>
+<meta name="description" content="Encrypted job-application board: the way from Bangalore to Europe as a pixel game.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8' shape-rendering='crispEdges'%3E%3Crect width='8' height='8' fill='%230b0c0b'/%3E%3Crect x='2' y='2' width='4' height='4' fill='%23c8ff5a'/%3E%3C/svg%3E">
+<!-- Vendored, pinned, licence next to it (dashboard/README.md). No third-party script is ever loaded at runtime. -->
+<script src="vendor/motion-12.23.0/motion.js" defer></script>
+<script src="art.js" defer></script>
+<script src="app.js" defer></script>
+</head>
+<body>
+
+<!-- Password screen. Nothing on this site is readable until the key is derived in the browser (dashboard/README.md). -->
+<div id="lock" class="lock">
+  <div class="scene lock-scene" id="lock-scene" aria-hidden="true"></div>
+  <form id="lock-form" class="lock-card frame" autocomplete="on">
+    <div class="lock-title">BLR <span class="arrow">&rarr;</span> EU<span class="cursor">_</span></div>
+    <p class="lock-intro">Everything here is encrypted. The password derives the key in your browser; nothing is sent anywhere.</p>
+    <label for="pw" class="lbl">Password</label>
+    <input id="pw" name="password" type="password" autocomplete="current-password" required autofocus>
+    <button id="pw-btn" class="gbtn t-lime" type="submit"><span class="ico" data-icon="key"></span><span>Press start</span></button>
+    <p id="lock-msg" class="lock-msg" role="alert" aria-live="polite"></p>
+  </form>
+</div>
+
+<div id="app" class="app" hidden>
+  <div id="sample" class="sample" hidden>SAMPLE DATA</div>
+
+  <!-- The hero: the parallax European scene (art.js), the HUD, the globe. -->
+  <header class="hero" aria-label="Overview">
+    <div class="scene" id="scene" aria-hidden="true"></div>
+    <div class="hero-shade" aria-hidden="true"></div>
+    <div class="hero-in">
+      <div class="topbar">
+        <span class="brand">Exodus board <span class="x">&times; &times; &times;</span> <span id="topright" class="muted"></span></span>
+        <span class="top-acts" id="top-acts"></span>
+      </div>
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <h1 class="headline" id="headline">BLR <em>&rarr;</em><br>EUROPE<span class="cursor">_</span></h1>
+          <p class="motto" id="motto" aria-live="polite"></p>
+        </div>
+        <div class="globe-wrap"><canvas id="globe" width="88" height="88" aria-label="Globe: destinations lit for every country applied to"></canvas><span class="globe-cap" id="globe-cap"></span></div>
+      </div>
+      <div class="hud" id="hud" aria-label="Status"></div>
+    </div>
+  </header>
+
+  <div id="since" class="since frame" hidden role="status"></div>
+
+  <nav class="tabs" id="tabs" role="tablist" aria-label="Views"></nav>
+
+  <main class="views">
+    <section id="view-board" class="view" role="tabpanel" aria-label="Board">
+      <div id="health" class="health frame" role="status" aria-live="polite" hidden></div>
+      <div class="lane-strip" id="lane-strip" aria-label="Lanes"></div>
+      <div class="board" id="board"></div>
+      <div id="discarded-jobs" class="closed-jobs"></div>
+      <div id="closed-jobs" class="closed-jobs"></div>
+    </section>
+    <section id="view-originals" class="view" role="tabpanel" aria-label="Originals" hidden></section>
+    <section id="view-notifications" class="view" role="tabpanel" aria-label="Notifications" hidden></section>
+    <section id="view-stats" class="view" role="tabpanel" aria-label="Stats" hidden></section>
+    <p class="foot" id="foot"></p>
+  </main>
+</div>
+
+<div id="modal" class="modal" hidden></div>
+<div id="tip" class="tip" role="tooltip" hidden></div>
+</body>
+</html>
